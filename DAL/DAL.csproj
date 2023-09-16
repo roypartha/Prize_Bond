@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,16 +52,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DataAccessFectory.cs" />
+    <Compile Include="EF\Models\Package.cs" />
+    <Compile Include="EF\Models\Payment.cs" />
+    <Compile Include="EF\Models\Premium.cs" />
+    <Compile Include="EF\Models\PrizeBond.cs" />
+    <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\PBContext.cs" />
+    <Compile Include="Interface\IRepo.cs" />
+    <Compile Include="Migrations\202309161841376_InitialCreate.cs" />
+    <Compile Include="Migrations\202309161841376_InitialCreate.designer.cs">
+      <DependentUpon>202309161841376_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\UserRpo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EF\Models\" />
+    <EmbeddedResource Include="Migrations\202309161841376_InitialCreate.resx">
+      <DependentUpon>202309161841376_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
