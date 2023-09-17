@@ -12,13 +12,19 @@ namespace DAL.EF.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+
+        [Required]  
+        public DateTime Payment_date { get; set; } 
+
+
         [ForeignKey("Package")]
         public int PackageId { get; set; }
-        [ForeignKey("Premium")]
-        public int PremiumId { get; set; }
+
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+        public User User { get; set; }
         public Package Package { get; set; }    
-        public Premium Premium { get; set; }
+       
       
 
     }

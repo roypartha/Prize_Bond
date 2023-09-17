@@ -59,13 +59,19 @@
     <Compile Include="EF\Models\PrizeBond.cs" />
     <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\PBContext.cs" />
+    <Compile Include="Interface\IAuth.cs" />
     <Compile Include="Interface\IRepo.cs" />
     <Compile Include="Migrations\202309161841376_InitialCreate.cs" />
     <Compile Include="Migrations\202309161841376_InitialCreate.designer.cs">
       <DependentUpon>202309161841376_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309170701180_2tableupdate.cs" />
+    <Compile Include="Migrations\202309170701180_2tableupdate.designer.cs">
+      <DependentUpon>202309170701180_2tableupdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\DataRepository.cs" />
     <Compile Include="Repos\UserRpo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +81,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202309161841376_InitialCreate.resx">
       <DependentUpon>202309161841376_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309170701180_2tableupdate.resx">
+      <DependentUpon>202309170701180_2tableupdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

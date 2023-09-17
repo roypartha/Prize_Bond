@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Interface
 {
-    internal class IRepo
+    public interface IRepo<MODELCLASS,NUMBER,LOGIC,OTHERS>
     {
+        List<MODELCLASS> GetAll();
+        MODELCLASS GetByID(NUMBER id);
+        LOGIC Create(MODELCLASS obj);
+        LOGIC Delete(NUMBER id);
+        LOGIC Update(MODELCLASS obj);
     }
 }

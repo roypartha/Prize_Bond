@@ -20,7 +20,12 @@ namespace DAL.EF.Models
         [Required]
         [ForeignKey("User")]
         public int UserId { get; set; }
+
+        [ForeignKey("Package")]
+        public int PackageId { get; set; }
         public User User { get; set; }//User 1 - * Premium 
+
+        public Package Package { get; set; }        
        
       
 

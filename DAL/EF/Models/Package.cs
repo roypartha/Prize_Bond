@@ -12,9 +12,10 @@ namespace DAL.EF.Models
         public int Id { get; set; }
         public string PackageName { get; set; }
         public long Ammount { get; set; }
-        public bool isActive { get; set; } = true;
+        public bool IsActive { get; set; } = true;
 
         public virtual ICollection<Payment> Payment { get; set; }   
+        public virtual ICollection<Premium> Premium { get; set; }   
 
     }
 }
