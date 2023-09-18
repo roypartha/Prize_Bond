@@ -29,6 +29,7 @@ namespace DAL.EF.Models
         public virtual ICollection<PrizeBond> PrizeBonds { get; set; } = new List<PrizeBond>(); // User 1 - * PrizeBond
         public virtual ICollection<Payment> Payments { get; set; }= new List<Payment>();// User 1 - * Payment
         public virtual ICollection<Premium> Premiums { get; set; } =new List<Premium>();//User 1 - * Premium 
-        
+        public virtual ICollection<Token> Tokens { get; set; }=new List<Token>();
+        public virtual ICollection<Session> Sessions { get; set; }= new List<Session>();
     }
 }

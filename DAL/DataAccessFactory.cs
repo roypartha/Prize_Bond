@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class DataAccessFectory
+    public class DataAccessFactory
     {
         public static IAuth<User,bool,string> AuthDataAccess()
         {
@@ -19,6 +19,13 @@ namespace DAL
         {
             return new UserRpo();
         }
-       
+        public static IRepo<Token, int, bool, string> TokenDataAccess()
+        {
+            return new TokenRepo();
+        }
+        public static IRepo<Session, int, bool, string> SessionDataAccess()
+        {
+            return new SessionRepo();
+        }
     }
 }

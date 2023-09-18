@@ -14,8 +14,8 @@ namespace BLL.Services
         public static bool CreateUser(string Name, string Username, string Email,string PhoneNumber, string Pass)
         {
 
-            var resu = DataAccessFectory.AuthDataAccess().GetByUsername(Username);
-            var rese = DataAccessFectory.AuthDataAccess().GetByEmail(Email);
+            var resu = DataAccessFactory.AuthDataAccess().GetByUsername(Username);
+            var rese = DataAccessFactory.AuthDataAccess().GetByEmail(Email);
 
             if(resu != null &&  rese !=null)
             {
@@ -36,7 +36,7 @@ namespace BLL.Services
             var mapper = MappingService<UserDTO, User>.GetMapper();
 
             var user = mapper.Map<User>(UserDto);
-            var userCreated = DataAccessFectory.UserDataAccess().Create(user);
+            var userCreated = DataAccessFactory.UserDataAccess().Create(user);
 
             if(userCreated) {
                 return true;

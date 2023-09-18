@@ -16,7 +16,13 @@ namespace DAL.Repos
     {
         public User Authenticate(string username, string password)
         {
-            throw new NotImplementedException();
+            var data = from u in context.Users
+                       where u.UserName.Equals(username)
+                       && u.Password.Equals(password)
+                       && u.IsBan == false
+                       && u.IsDelete == false
+                       select u;
+            return data.SingleOrDefault();
         }
 
         public bool Create(User obj)

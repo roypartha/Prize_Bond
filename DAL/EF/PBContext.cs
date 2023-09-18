@@ -16,5 +16,7 @@ namespace DAL.EF
         public DbSet<Premium> Premiums { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Package> Packages { get; set; }        
+        public DbSet<Token> Tokens { get; set; }
+        public DbSet<Session> Sessions { get; set; }
     }
 }

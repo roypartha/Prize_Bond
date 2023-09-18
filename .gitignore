@@ -362,3 +362,9 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /DAL/Migrations
+/DAL/Migrations/202309170701180_2tableupdate.cs
+/DAL/Migrations/202309170701180_2tableupdate.designer.cs
+/DAL/Migrations/202309170701180_2tableupdate.resx
+/DAL/Migrations/202309170701180_2tableupdate.cs
+/DAL/Migrations/202309170701180_2tableupdate.designer.cs
+/DAL/Migrations/202309170701180_2tableupdate.resx
