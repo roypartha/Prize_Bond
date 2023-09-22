@@ -56,5 +56,14 @@ namespace BLL.Services
             }
             return false;
         }
+        public static bool IsAdmin(string token)
+        {
+            var tk = (from t in DataAccessFactory.TokenDataAccess().GetAll()
+                      where t.TokenKey.Equals(token)
+                      && t.ExpiredAt == null
+                      && t.User.Role.Equals("admin")
+                      select t).SingleOrDefault();
+            return tk != null;
+        }
     }
 }
