@@ -30,7 +30,7 @@ namespace DAL.Repos
 
         public List<Session> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Sessions.ToList();
         }
 
         public Session GetByID(int id)

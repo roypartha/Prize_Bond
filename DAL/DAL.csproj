@@ -61,6 +61,7 @@
     <Compile Include="EF\Models\Token.cs" />
     <Compile Include="EF\Models\User.cs" />
     <Compile Include="EF\PBContext.cs" />
+    <Compile Include="Interface\IBond.cs" />
     <Compile Include="Interface\IAuth.cs" />
     <Compile Include="Interface\IRepo.cs" />
     <Compile Include="Migrations\202309161841376_InitialCreate.cs" />
@@ -77,6 +78,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\BondRepo.cs" />
     <Compile Include="Repos\DataRepository.cs" />
     <Compile Include="Repos\SessionRepo.cs" />
     <Compile Include="Repos\TokenRepo.cs" />

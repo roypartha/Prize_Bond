@@ -27,5 +27,9 @@ namespace DAL
         {
             return new SessionRepo();
         }
+        public static IBond<PrizeBond, int, bool, string> BondDataAccess()
+        {
+          return new BondRepo();
+        }
     }
 }

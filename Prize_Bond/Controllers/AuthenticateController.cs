@@ -20,7 +20,7 @@ namespace Prize_Bond.Controllers
             try
             {
                 //string userAgent = Request.Headers.GetValues("User-Agent").FirstOrDefault();
-                var token = AuthServices.Login(login.Username,login.Password);
+                var token = AuthServices.Login(login.Username, login.Password);
                 if (token != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, token);
@@ -36,5 +36,47 @@ namespace Prize_Bond.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/logout")]
+        public HttpResponseMessage Logout()
+        {
+            try
+            {
+                //string userAgent = Request.Headers.GetValues("User-Agent").FirstOrDefault();
+                var token = Request.Headers.Authorization.ToString();
+                var userId = AuthServices.GetUserID(token);
+                if (userId > 0)
+                {
+                    var userSession = AuthServices.GetUserActiveSession(userId);
+                    if (userSession != null)
+                    {
+                        userSession.LogoutTime = DateTime.Now;
+                        userSession.IsActive = false;
+
+                        bool chk = AuthServices.ChangeSession(userSession);
+
+                        // AND with new changeToken.
+                        chk &= AuthServices.ChangeToken(userId, token);
+
+                        if (chk)
+                        {
+                            return Request.CreateResponse(HttpStatusCode.OK, new { Msg = "Logged-Out" });
+                        }
+                        else
+                            return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Not able to change the user session or token");
+                    }
+                    else
+                        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Not getting the user session.");
+                }
+                else
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Not getting the user.");
+            }
+            catch (Exception ex) 
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message.ToString());
+            }
+        }       
+
     }
+    
 }

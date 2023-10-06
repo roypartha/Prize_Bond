@@ -45,12 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTOs\Login.cs" />
-    <Compile Include="DTOs\PrizeBond.cs" />
+    <Compile Include="DTOs\PrizeBondDTO.cs" />
+    <Compile Include="DTOs\SessionDTO.cs" />
     <Compile Include="DTOs\TokenDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthServices.cs" />
     <Compile Include="Services\MappingService.cs" />
+    <Compile Include="Services\PrizeBondServices.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +64,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

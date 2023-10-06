@@ -1,4 +1,5 @@
-﻿using BLL.DTOs;
+﻿using AutoMapper;
+using BLL.DTOs;
 using DAL;
 using DAL.EF.Models;
 using System;
@@ -43,6 +44,35 @@ namespace BLL.Services
             }
             return false;
 
+        }
+        public static UserDTO GetUserById(int userId)
+        {
+            if(userId > 0)
+            {
+                var userInfo = DataAccessFactory.UserDataAccess().GetByID(userId);
+
+                if(userInfo != null)
+                {
+                    var mapper = MappingService<User, UserDTO>.GetMapper();
+                    var msg = mapper.Map<UserDTO>(userInfo);
+
+                    return msg;
+                }
+                return null;
+                
+            }
+            return null;
+        }
+
+        public static bool DeteteBond(int bondId)
+        {
+            if(bondId>0)
+            {
+                var bond = DataAccessFactory.BondDataAccess().Delete(bondId);
+
+                return bond;
+            }
+            return false;
         }
     }
 }

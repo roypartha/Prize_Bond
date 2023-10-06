@@ -49,7 +49,7 @@ namespace DAL.Repos
 
         public User GetByID(int id)
         {
-            throw new NotImplementedException();
+            return context.Users.Find(id);
         }
 
         public User GetByUsername(string username)

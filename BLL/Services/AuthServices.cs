@@ -14,7 +14,7 @@ namespace BLL.Services
         public static TokenDTO Login(string username, string password)
         {
             var data = DataAccessFactory.AuthDataAccess().Authenticate(username, password);
-           
+
 
             if (data != null)
             {
@@ -64,6 +64,58 @@ namespace BLL.Services
                       && t.User.Role.Equals("admin")
                       select t).SingleOrDefault();
             return tk != null;
+        }
+
+        public static int GetUserID(string token)
+        {
+            var id = (from t in DataAccessFactory.TokenDataAccess().GetAll()
+                      where t.TokenKey.Equals(token)
+                      && t.ExpiredAt == null
+                      select t.UserId).SingleOrDefault();
+            return id;
+        }
+
+        public static SessionDTO GetUserActiveSession(int userid)
+        {
+            var data = DataAccessFactory.SessionDataAccess().GetByID(userid);
+            if (data != null)
+            {
+                var mapper = MappingService<Session, SessionDTO>.GetMapper();
+                var rtn = mapper.Map<SessionDTO>(data);
+                return rtn;
+            }
+            return null;
+        }
+        public static bool ChangeToken(int uid, string token)
+        {
+            var tk = (from t in DataAccessFactory.TokenDataAccess().GetAll()
+                      where t.TokenKey.Equals(token)
+                      && t.UserId == uid
+                      && t.ExpiredAt == null
+                      select t).SingleOrDefault();
+
+            var updatetk = false;
+            if (tk != null)
+            {
+                tk.ExpiredAt = DateTime.Now;
+                updatetk = DataAccessFactory.TokenDataAccess().Update(tk);
+            }
+            return updatetk == true;
+        }
+        public static bool ChangeSession(SessionDTO obj)
+        {
+            // Creating a new session obj
+            var data = new Session
+            {
+                SessionID = obj.SessionID,
+                IsActive = false,
+                UserID = obj.UserID,
+                LogoutTime = obj.LogoutTime,
+                LoginTime = obj.LoginTime
+            };
+
+            var rtn = DataAccessFactory.SessionDataAccess().Update(data);
+            return rtn == true;
         }
     }
 }
